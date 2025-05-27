@@ -19,12 +19,12 @@ const HexagonGrid: React.FC = () => {
 
   useEffect(() => {
     // Generate the hexagon grid data
-    gridRef.current = generateHexagonGrid(gridSize, hexSize, 1, colorScheme);
-  }, [gridSize, hexSize, colorScheme]);
+    gridRef.current = generateHexagonGrid(50, hexSize, 1, colorScheme);
+  }, [gridSize, hexSize, colorScheme,]);
 
   return (
     <Canvas
-      camera={{ position: [0, 20, 20], fov: 75 }}
+      camera={{ position: [0, 20, 20], fov: 100 }}
       gl={{ antialias: true }}
       dpr={[1, 2]}
     >
@@ -65,18 +65,15 @@ const HexagonGrid: React.FC = () => {
       </group>
 
       {/* Grid helper */}
-      <gridHelper
-        args={[50, 50, "#1a1a1a", "#1a1a1a"]}
-        position={[0, -0.01, 0]}
-      />
+
 
       {/* Camera controls */}
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
-        rotateSpeed={rotationSpeed / 100}
+        rotateSpeed={1}
         minDistance={5}
-        maxDistance={50}
+        maxDistance={100}
         maxPolarAngle={Math.PI / 2.1}
       />
 
